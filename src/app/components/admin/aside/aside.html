@@ -6,15 +6,15 @@
   </div>
   <nav class="sidebar-nav">
     <ul>
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
         <a href="">
           <i class="icon fas fa-home"></i>
           <span class="text">Inicio</span>
         </a>
       </li>
 
-      <li class="nav-item active" >
-        <a href="" >
+      <li class="nav-item" routerLinkActive="active" >
+        <a routerLink="/dashboard">
           <span class="icon">
             <svg
               width="20"
@@ -35,7 +35,14 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="/admin-information">
+          <i class="icon fas fa-file"></i>
+          <span class="text">Información</span>
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active">
         <a href="">
           <span class="icon">
             <svg
@@ -60,14 +67,14 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
         <a href="">
           <i class="icon fas fa-phone"></i>
           <span class="text">Contacto</span>
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
         <a href="">
           <span class="icon">
             <svg
@@ -86,7 +93,7 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" routerLinkActive="active">
         <a (click)="logout()">
           <span class="icon">
             <svg

@@ -1,0 +1,531 @@
+<app-aside></app-aside>
+<div class="overlay"></div>
+<!-- ======== main-wrapper start =========== -->
+<main class="main-wrapper">
+  <app-header></app-header>
+  <!-- ========== header end ========== -->
+
+  <section class="section">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Administrar Información</h2>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row col-12">
+            <form
+              class="row g-3"
+              [formGroup]="infoForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <!-- Títulos y subtítulos -->
+              <div class="row mb-4">
+                <h4 class="mb-3">Información Principal</h4>
+
+                <div class="col-6">
+                  <h5 class="mt-4" style="color: gray">
+                    Primera sección de la página
+                  </h5>
+                  <p class="pt-2">
+                    En esta sección podras editar la información de la primera
+                    sección de la página
+                  </p>
+                </div>
+                <div class="col-6">
+                  <div class="col-md-12">
+                    <label for="title1" class="form-label">Título 1</label>
+                    <input
+                      id="title1"
+                      class="form-control"
+                      formControlName="title1"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="subtitle1" class="form-label"
+                      >Subtítulo 1</label
+                    >
+                    <input
+                      id="subtitle1"
+                      class="form-control"
+                      formControlName="subtitle1"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="title2" class="form-label">Título 2</label>
+                    <input
+                      id="title2"
+                      class="form-control"
+                      formControlName="title2"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="subtitle2" class="form-label"
+                      >Subtítulo 2</label
+                    >
+                    <input
+                      id="subtitle2"
+                      class="form-control"
+                      formControlName="subtitle2"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="description1" class="form-label"
+                      >Descripción 1</label
+                    >
+                    <textarea
+                      id="description1"
+                      rows="3"
+                      class="form-control"
+                      formControlName="description1"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="image1" class="form-label">Imagen 1</label>
+                    <input
+                      id="image1"
+                      class="form-control"
+                      (change)="onFileSelected($event, 'image1')"
+                      type="file"
+                    />
+                  </div>
+
+                  
+                  @if (infoForm.get('image1')?.value) {
+                    <div class="mt-2">
+                      <img [src]="getFullImageUrl(infoForm.get('image1')?.value)" alt="Imagen 1" class="img-thumbnail" width="200" />
+                    </div>
+                  }
+
+                  <!-- Preview de imagen seleccionada antes de guardar -->
+                 @if (previewUrls['image1']) {
+                    <div class="mt-2">
+                      <img
+                        [src]="previewUrls['image1']"
+                        alt="Preview Imagen 1"
+                        class="img-thumbnail border border-primary"
+                        width="200"
+                      />
+                    </div>
+                  }
+                  
+                </div>
+              </div>
+              <hr />
+
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h5 class="mt-4" style="color: gray">
+                    Segunda sección de la página
+                  </h5>
+                  <p class="pt-2">
+                    En esta sección podras editar la información de la segunda
+                    sección de la página
+                  </p>
+                </div>
+                <div class="col-6">
+                  <div class="col-md-12">
+                    <label for="title3" class="form-label">Título 3</label>
+                    <input
+                      id="title3"
+                      class="form-control"
+                      formControlName="title3"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="subtitle3" class="form-label"
+                      >Subtítulo 3</label
+                    >
+                    <input
+                      id="subtitle3"
+                      class="form-control"
+                      formControlName="subtitle3"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="description2" class="form-label"
+                      >Descripción 2</label
+                    >
+                    <textarea
+                      id="description2"
+                      rows="3"
+                      class="form-control"
+                      formControlName="description2"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="subtitle4" class="form-label"
+                      >Subtítulo 4</label
+                    >
+                    <input
+                      id="subtitle4"
+                      class="form-control"
+                      formControlName="subtitle4"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="description4" class="form-label"
+                      >Descripción 4</label
+                    >
+                    <textarea
+                      id="description4"
+                      rows="3"
+                      class="form-control"
+                      formControlName="description4"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="image2" class="form-label">Imagen 2</label>
+                    <input
+                      id="image2"
+                      class="form-control"
+                      (change)="onFileSelected($event, 'image2')"
+                      type="file"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h5 class="mt-4" style="color: gray">
+                    Tercera sección de la página
+                  </h5>
+                  <p class="pt-2">
+                    En esta sección podras editar la información de la tercera
+                    sección de la página
+                  </p>
+                </div>
+                <div class="col-6">
+                  <div class="col-md-12">
+                    <label for="title4" class="form-label">Título 4</label>
+                    <input
+                      id="title4"
+                      class="form-control"
+                      formControlName="title4"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="subtitle5" class="form-label"
+                      >Subtítulo 5</label
+                    >
+                    <input
+                      id="subtitle5"
+                      class="form-control"
+                      formControlName="subtitle5"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="process1" class="form-label">Proceso 1</label>
+                    <input
+                      id="process1"
+                      class="form-control"
+                      formControlName="process1"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="desprocess1" class="form-label"
+                      >Descripción Proceso 1</label
+                    >
+                    <textarea
+                      id="desprocess1"
+                      rows="2"
+                      class="form-control"
+                      formControlName="desprocess1"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="process2" class="form-label">Proceso 2</label>
+                    <input
+                      id="process2"
+                      class="form-control"
+                      formControlName="process2"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="desprocess2" class="form-label"
+                      >Descripción Proceso 2</label
+                    >
+                    <textarea
+                      id="desprocess2"
+                      rows="2"
+                      class="form-control"
+                      formControlName="desprocess2"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="process3" class="form-label">Proceso 3</label>
+                    <input
+                      id="process3"
+                      class="form-control"
+                      formControlName="process3"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="desprocess3" class="form-label"
+                      >Descripción Proceso 3</label
+                    >
+                    <textarea
+                      id="desprocess3"
+                      rows="2"
+                      class="form-control"
+                      formControlName="desprocess3"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h5 class="mt-4" style="color: gray">
+                    Cuarta sección de la página
+                  </h5>
+                  <p class="pt-2">
+                    En esta sección podras editar la información de la cuarta
+                    sección de la página
+                  </p>
+                </div>
+                <div class="col-6">
+                  <div class="col-md-12">
+                    <label for="title5" class="form-label">Título 5</label>
+                    <input
+                      id="title5"
+                      class="form-control"
+                      formControlName="title5"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="subtitle6" class="form-label"
+                      >Subtítulo 6</label
+                    >
+                    <input
+                      id="subtitle6"
+                      class="form-control"
+                      formControlName="subtitle6"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h5 class="mt-4" style="color: gray">
+                    Quinta sección de la página
+                  </h5>
+                  <p class="pt-2">
+                    En esta sección podras editar la información de la quinta
+                    sección de la página
+                  </p>
+                </div>
+
+                <div class="col-6">
+                  <div class="col-md-12">
+                    <label for="title6" class="form-label">Título 6</label>
+                    <input
+                      id="title6"
+                      class="form-control"
+                      formControlName="title6"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="subtitle7" class="form-label"
+                      >Subtítulo 7</label
+                    >
+                    <input
+                      id="subtitle7"
+                      class="form-control"
+                      formControlName="subtitle7"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="image3" class="form-label">Imagen 3</label>
+                    <input
+                      id="image3"
+                      class="form-control"
+                      (change)="onFileSelected($event, 'image3')"
+                      type="file"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <div class="row mb-4">
+                <div class="col-6">
+                  <h5 class="mt-4" style="color: gray">
+                    Información de contacto y footer
+                  </h5>
+                  <p class="pt-2">
+                    En esta sección podras editar la información de contacto y
+                    footer de la página
+                  </p>
+                </div>
+                <div class="col-6">
+                  <div class="col-md-12">
+                    <label for="logo" class="form-label">Logo</label>
+                    <input
+                      id="logo"
+                      class="form-control"
+                      formControlName="logo"
+                      type="file"
+                    />
+                  </div>
+
+                  <div class="col-12">
+                    <label for="texto" class="form-label">Texto Footer</label>
+                    <textarea
+                      id="texto"
+                      rows="2"
+                      class="form-control"
+                      formControlName="texto"
+                    ></textarea>
+                  </div>
+
+                  <!-- Contacto -->
+                  <div class="col-md-12">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input
+                      id="telefono"
+                      class="form-control"
+                      formControlName="telefono"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      id="email"
+                      class="form-control"
+                      formControlName="email"
+                      type="email"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input
+                      id="direccion"
+                      class="form-control"
+                      formControlName="direccion"
+                      type="text"
+                    />
+                  </div>
+
+                  <!-- Redes sociales -->
+                  <div class="col-md-12">
+                    <label for="facebook" class="form-label">Facebook</label>
+                    <input
+                      id="facebook"
+                      class="form-control"
+                      formControlName="facebook"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="instagram" class="form-label">Instagram</label>
+                    <input
+                      id="instagram"
+                      class="form-control"
+                      formControlName="instagram"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="twitter" class="form-label">Twitter</label>
+                    <input
+                      id="twitter"
+                      class="form-control"
+                      formControlName="twitter"
+                      type="text"
+                    />
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="linkedin" class="form-label">LinkedIn</label>
+                    <input
+                      id="linkedin"
+                      class="form-control"
+                      formControlName="linkedin"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="youtube" class="form-label">YouTube</label>
+                    <input
+                      id="youtube"
+                      class="form-control"
+                      formControlName="youtube"
+                      type="text"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label for="whatsapp" class="form-label">WhatsApp</label>
+                    <input
+                      id="whatsapp"
+                      class="form-control"
+                      formControlName="whatsapp"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botón Guardar -->
+              <div class="col-12 text-end">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  [disabled]="isLoading"
+                >
+                  {{ isLoading ? "Guardando..." : "Guardar cambios" }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</main>

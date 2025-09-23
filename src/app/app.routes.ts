@@ -6,6 +6,7 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { MainLayout } from './layouts/main-layout/main-layout';
 import { AdminLayout } from './layouts/admin-layout/admin-layout';
 import { Dashboard } from './components/admin/dashboard/dashboard';
+import { AdminInfo } from './components/admin/admin-info/admin-info';
 
 
 export const routes: Routes = [
@@ -30,6 +31,7 @@ export const routes: Routes = [
         component: AdminLayout,
         children: [
         { path: 'dashboard', component: Dashboard },
+        { path: 'admin-information', component: AdminInfo },
         ]
     },
 ];
