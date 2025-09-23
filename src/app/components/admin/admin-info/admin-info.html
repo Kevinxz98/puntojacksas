@@ -206,6 +206,24 @@
                       type="file"
                     />
                   </div>
+
+                  @if (infoForm.get('image2')?.value) {
+                    <div class="mt-2">
+                      <img [src]="getFullImageUrl(infoForm.get('image2')?.value)" alt="Imagen 1" class="img-thumbnail" width="200" />
+                    </div>
+                  }
+
+                  <!-- Preview de imagen seleccionada antes de guardar -->
+                 @if (previewUrls['image2']) {
+                    <div class="mt-2">
+                      <img
+                        [src]="previewUrls['image2']"
+                        alt="Preview Imagen 1"
+                        class="img-thumbnail border border-primary"
+                        width="200"
+                      />
+                    </div>
+                  }
                 </div>
               </div>
               <hr />
@@ -387,6 +405,24 @@
                       type="file"
                     />
                   </div>
+
+                  @if (infoForm.get('image3')?.value) {
+                    <div class="mt-2">
+                      <img [src]="getFullImageUrl(infoForm.get('image3')?.value)" alt="Imagen 1" class="img-thumbnail" width="200" />
+                    </div>
+                  }
+
+                  <!-- Preview de imagen seleccionada antes de guardar -->
+                 @if (previewUrls['image3']) {
+                    <div class="mt-2">
+                      <img
+                        [src]="previewUrls['image3']"
+                        alt="Preview Imagen 1"
+                        class="img-thumbnail border border-primary"
+                        width="200"
+                      />
+                    </div>
+                  }
                 </div>
               </div>
               <hr />

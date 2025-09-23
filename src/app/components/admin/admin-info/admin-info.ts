@@ -19,6 +19,7 @@ export class AdminInfo implements OnInit {
   infoForm!: FormGroup;
   isLoading = false;
   backendUrl = 'http://127.0.0.1:8000/storage/';
+  //backendUrl = ''; 
 
   constructor(private infoService: Information, private fb: FormBuilder, private cdr: ChangeDetectorRef) {}
 
@@ -73,7 +74,13 @@ export class AdminInfo implements OnInit {
   }
 
   getFullImageUrl(path: string | null): string {
-    return path ? this.backendUrl + path : '';
+    if (!path) return '';
+    // Si ya es una URL absoluta (http o https), la dejo como está
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    // Si es relativa, le agrego el backendUrl
+    return this.backendUrl + path;
   }
 
   previewUrls: { [key: string]: string } = {};

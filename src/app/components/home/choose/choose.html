@@ -1,5 +1,9 @@
 <div class="choose-us-style-one-area default-padding text-light">
-    <div class="cover-bg" style="background-image: url(./images/7.jpg)"></div>
+<div
+  class="cover-bg"
+  [style.background-image]="'url(' + ((infoService.info$ | async)?.image2) + ')'"
+>
+</div>
     <div class="shape-left-top">
       <img src="./images/17.png" alt="Shape" />
     </div>
@@ -8,17 +12,15 @@
       <div class="row">
         <div class="col-lg-6 pr-80">
           <div class="choose-us-style-one">
-            <h2 class="title mb-35">Soluciones para tu Empresa y Oficina</h2>
+            <h2 class="title mb-35">{{ (infoService.info$ | async)?.title3 }}</h2>
             <ul class="list-item">
               <li
                 class="wow fadeInUp"
                 style="visibility: visible; animation-name: fadeInUp"
               >
-                <h4>Empresa de servicios generales en Bogot&aacute;</h4>
+                <h4>{{ (infoService.info$ | async)?.subtitle3 }}</h4>
                 <p>
-                  En PuntoJack SAS, nos especializamos en ofrecer servicios de
-                  limpieza y mantenimiento de edificios, oficinas, obras civiles
-                  menores y conjuntos residenciales en Bogot&aacute;
+                  {{ (infoService.info$ | async)?.description2 }}
                 </p>
               </li>
               <li
@@ -30,12 +32,9 @@
                   animation-name: fadeInUp;
                 "
               >
-                <h4>24/7 Servicio al cliente</h4>
+                <h4>{{ (infoService.info$ | async)?.subtitle4 }}</h4>
                 <p>
-                  Mejore la productividad y eficiencia de su negocio con
-                  soluciones en outsourcing personalizadas y disponibilidad
-                  24/7. &iexcl;Cont&aacute;ctenos hoy para descubrir c&oacute;mo
-                  podemos ayudarle a alcanzar sus objetivos empresariales!
+                  {{ (infoService.info$ | async)?.description4 }}
                 </p>
               </li>
             </ul>

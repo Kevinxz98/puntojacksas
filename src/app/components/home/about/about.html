@@ -13,19 +13,13 @@
           <div class="row align-center">
             <div class="about-style-one col-xl-6 col-lg-5">
               <div class="h4 sub-heading">
-                Compa&ntilde;ia de limpieza en Bogot&aacute;
+                {{ (infoService.info$ | async)?.title2 }}
               </div>
               <h2 class="title mb-25">
-                Empresa de Limpieza. Somos Especialistas.
+                {{ (infoService.info$ | async)?.subtitle2 }}
               </h2>
               <p>
-                Nuestro equipo capacitado garantiza la excelencia en la
-                ejecuci&oacute;n de tareas diarias como limpieza, mantenimiento
-                y gesti&oacute;n de suministros y tambi&eacute;n aporta una
-                visi&oacute;n estrat&eacute;gica para optimizar recursos y
-                mejorar la productividad. Descubre c&oacute;mo podemos ayudarte
-                a mantener tus instalaciones impecables y funcionales con
-                soluciones personalizadas de servicios generales.
+                {{ (infoService.info$ | async)?.description1 }}
               </p>
               <div class="owner-info">
                 <div class="left-info">
@@ -40,7 +34,7 @@
               <div class="about-thumb">
                 <img
                   class="wow fadeInRight"
-                  src="./images/imagen5.png"
+                  src="{{ (infoService.info$ | async)?.image1 }}"
                   alt="PuntoJack Servicios Generales y Mantenimiento locativo en Bogot&aacute;"
                   style="visibility: visible; animation-name: fadeInRight"
                 />

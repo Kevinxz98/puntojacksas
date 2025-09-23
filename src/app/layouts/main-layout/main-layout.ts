@@ -1,6 +1,7 @@
-import { Component, AfterViewInit  } from '@angular/core';
+import { Component, AfterViewInit, OnInit  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ViewEncapsulation } from '@angular/core';
+import { Information } from '../../services/information';
 
 @Component({
   selector: 'app-main-layout',
@@ -12,7 +13,17 @@ import { ViewEncapsulation } from '@angular/core';
   styleUrl: './main-layout.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class MainLayout implements AfterViewInit  {
+export class MainLayout implements AfterViewInit, OnInit {
+
+
+  infoData: any = null;
+
+  constructor(private infoService: Information) {}
+
+  ngOnInit(): void {
+    this.infoService.loadInformation();
+  }
+
   ngAfterViewInit() {
     const script = document.createElement('script');
     script.src = 'assets/js/main.js';

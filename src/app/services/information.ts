@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Information {
   private apiUrl = 'http://127.0.0.1:8000/api/information/show';
+
+  private infoSubject = new BehaviorSubject<any>(null);
+  info$ = this.infoSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +24,13 @@ export class Information {
     };
   }
 
+  loadInformation(): void {
+    this.http.get<any>(this.apiUrl, this.getHeaders()).subscribe({
+      next: (data) => this.infoSubject.next(data),
+      error: (err) => console.error('Error cargando información', err)
+    });
+  }
+
   getInformation(): Observable<any> {
     return this.http.get<any>(this.apiUrl, this.getHeaders());
   } 
@@ -27,14 +38,12 @@ export class Information {
   updateInformation(data: any, files?: { [key: string]: File }): Observable<any> {
   const formData = new FormData();
 
-  // Tus campos normales
+
   Object.keys(data).forEach(key => {
     if (data[key] !== null && data[key] !== undefined) {
       formData.append(key, data[key]);
     }
   });
-
-  // Archivos opcionales
   if (files) {
     Object.keys(files).forEach(field => {
       if (files[field]) {
@@ -42,16 +51,10 @@ export class Information {
       }
     });
   }
-
-  // Hack para Laravel: decirle que es un PUT
   formData.append('_method', 'PUT');
-
-  // Debug: ver lo que envías
   for (let pair of formData.entries()) {
     console.log(pair[0]+ ': ' + pair[1]);
   }
-
-  // Ojo: usamos POST acá
   return this.http.post<any>(this.apiUrl, formData, this.getHeaders());
 }
 
