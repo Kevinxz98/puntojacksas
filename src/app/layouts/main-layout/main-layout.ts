@@ -21,7 +21,7 @@ export class MainLayout implements AfterViewInit, OnInit {
   constructor(private infoService: Information) {}
 
   ngOnInit(): void {
-    this.infoService.loadInformation();
+    this.infoService.loadViewInfo();
   }
 
   ngAfterViewInit() {

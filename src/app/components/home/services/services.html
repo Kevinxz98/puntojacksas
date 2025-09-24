@@ -6,8 +6,8 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="site-heading text-center">
-            <h4 class="sub-heading">Descubre</h4>
-            <h2 class="title">ESPECIALISTAS EN ASEO Y LIMPIEZA</h2>
+            <h4 class="sub-heading">{{ (infoService.viewInfo$ | async)?.title5 }}</h4>
+            <h2 class="title">{{ (infoService.viewInfo$ | async)?.subtitle6 }}</h2>
             <div class="devider"></div>
           </div>
         </div>

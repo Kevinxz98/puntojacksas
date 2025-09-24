@@ -1,0 +1,62 @@
+<app-aside></app-aside>
+<div class="overlay"></div>
+
+<main class="main-wrapper">
+    <app-header></app-header>
+
+
+    <section class="section">
+        <div class="container-fluid">
+            <!-- ========== title-wrapper start ========== -->
+            <div class="title-wrapper pt-30">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="title">
+                            <h2>Administrar Servicios</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row col-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Servicio</th>
+                                    <th scope="col">Titulo</th>
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let s of servicios; trackBy: trackById">
+                                    <td>{{ s.id }}</td>
+                                    <td>{{ s.nombre }}</td>
+                                    <td>{{ s.titulo }}</td>
+                                    <td>
+                                        <img [src]="'http://127.0.0.1:8000/storage/' + s.foto" alt="Imagen del servicio"
+                                            width="100">
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm me-2">Editar</button>
+                                        <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

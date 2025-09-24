@@ -13,13 +13,13 @@
           <div class="row align-center">
             <div class="about-style-one col-xl-6 col-lg-5">
               <div class="h4 sub-heading">
-                {{ (infoService.info$ | async)?.title2 }}
+                {{ (infoService.viewInfo$ | async)?.title2 }}
               </div>
               <h2 class="title mb-25">
-                {{ (infoService.info$ | async)?.subtitle2 }}
+                {{ (infoService.viewInfo$ | async)?.subtitle2 }}
               </h2>
               <p>
-                {{ (infoService.info$ | async)?.description1 }}
+                {{ (infoService.viewInfo$ | async)?.description1 }}
               </p>
               <div class="owner-info">
                 <div class="left-info">
@@ -34,7 +34,7 @@
               <div class="about-thumb">
                 <img
                   class="wow fadeInRight"
-                  src="{{ (infoService.info$ | async)?.image1 }}"
+                  src="{{ (infoService.viewInfo$ | async)?.image1 }}"
                   alt="PuntoJack Servicios Generales y Mantenimiento locativo en Bogot&aacute;"
                   style="visibility: visible; animation-name: fadeInRight"
                 />

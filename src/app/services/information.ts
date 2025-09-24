@@ -8,9 +8,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class Information {
   private apiUrl = 'http://127.0.0.1:8000/api/information/show';
+  private apiViewInfo = 'http://127.0.0.1:8000/api/viewinformation/show';
 
   private infoSubject = new BehaviorSubject<any>(null);
   info$ = this.infoSubject.asObservable();
+
+  private viewInfoSubject = new BehaviorSubject<any>(null);
+  viewInfo$ = this.viewInfoSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +26,13 @@ export class Information {
         'Accept': 'application/json'
       })
     };
+  }
+
+   loadViewInfo(): void {
+    this.http.get<any>(this.apiViewInfo).subscribe({
+      next: (data) => this.viewInfoSubject.next(data),
+      error: (err) => console.error('Error cargando información pública', err)
+    });
   }
 
   loadInformation(): void {

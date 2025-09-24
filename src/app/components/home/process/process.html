@@ -6,8 +6,8 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="site-heading text-center">
-            <h4 class="sub-heading">Nuestros Procesos de aseo</h4>
-            <h2 class="title">Caracter&iacute;sticas de nuestro personal</h2>
+            <h4 class="sub-heading">{{ (infoService.viewInfo$ | async)?.title4 }}</h4>
+            <h2 class="title">{{ (infoService.viewInfo$ | async)?.subtitle5 }}</h2>
             <div class="devider"></div>
           </div>
         </div>
@@ -23,10 +23,9 @@
               <img src="./images/3.jpg" alt="Thumb" />
               <span>01</span>
             </div>
-            <h4>Experiencia y Competencia</h4>
+            <h4>{{ (infoService.viewInfo$ | async)?.process1 }}</h4>
             <p>
-              Garantizamos que puedan enfrentar eficazmente cualquier desafío
-              operativo que pueda surgir.
+              {{ (infoService.viewInfo$ | async)?.desprocess1 }}
             </p>
           </div>
         </div>
@@ -38,10 +37,9 @@
               <img src="./images/aseo1.png" alt="Thumb" />
               <span>02</span>
             </div>
-            <h4>Adaptabilidad y Flexibilidad</h4>
+            <h4>{{ (infoService.viewInfo$ | async)?.process2 }}</h4>
             <p>
-              Nos permite ofrecer soluciones personalizadas y ajustarse
-              rápidamente a cambios en los requisitos del servicio.
+              {{ (infoService.viewInfo$ | async)?.desprocess2 }}
             </p>
           </div>
         </div>
@@ -53,11 +51,9 @@
               <img src="./images/todero1.png" alt="Thumb" />
               <span>03</span>
             </div>
-            <h4>Profesionalismo y Fiabilidad</h4>
+            <h4>{{ (infoService.viewInfo$ | async)?.process3 }}</h4>
             <p>
-              Nuestros empleados deben demostrar un alto nivel de
-              profesionalismo en su trabajo, asegurando un trato respetuoso con
-              TODOS.
+              {{ (infoService.viewInfo$ | async)?.desprocess3 }}
             </p>
           </div>
         </div>

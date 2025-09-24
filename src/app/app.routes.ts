@@ -7,7 +7,7 @@ import { MainLayout } from './layouts/main-layout/main-layout';
 import { AdminLayout } from './layouts/admin-layout/admin-layout';
 import { Dashboard } from './components/admin/dashboard/dashboard';
 import { AdminInfo } from './components/admin/admin-info/admin-info';
-
+import { AdminServicios } from './components/admin/admin-servicios/admin-servicios';
 
 export const routes: Routes = [
  
@@ -16,6 +16,7 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
         { path: '', component: Home },
+        
         ]
     },
     {
@@ -32,6 +33,7 @@ export const routes: Routes = [
         children: [
         { path: 'dashboard', component: Dashboard },
         { path: 'admin-information', component: AdminInfo },
+        { path: 'admin-servicios', component: AdminServicios },
         ]
     },
 ];

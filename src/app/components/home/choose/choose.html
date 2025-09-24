@@ -1,7 +1,7 @@
 <div class="choose-us-style-one-area default-padding text-light">
 <div
   class="cover-bg"
-  [style.background-image]="'url(' + ((infoService.info$ | async)?.image2) + ')'"
+  [style.background-image]="'url(' + ((infoService.viewInfo$ | async)?.image2) + ')'"
 >
 </div>
     <div class="shape-left-top">
@@ -12,15 +12,15 @@
       <div class="row">
         <div class="col-lg-6 pr-80">
           <div class="choose-us-style-one">
-            <h2 class="title mb-35">{{ (infoService.info$ | async)?.title3 }}</h2>
+            <h2 class="title mb-35">{{ (infoService.viewInfo$ | async)?.title3 }}</h2>
             <ul class="list-item">
               <li
                 class="wow fadeInUp"
                 style="visibility: visible; animation-name: fadeInUp"
               >
-                <h4>{{ (infoService.info$ | async)?.subtitle3 }}</h4>
+                <h4>{{ (infoService.viewInfo$ | async)?.subtitle3 }}</h4>
                 <p>
-                  {{ (infoService.info$ | async)?.description2 }}
+                  {{ (infoService.viewInfo$ | async)?.description2 }}
                 </p>
               </li>
               <li
@@ -32,9 +32,9 @@
                   animation-name: fadeInUp;
                 "
               >
-                <h4>{{ (infoService.info$ | async)?.subtitle4 }}</h4>
+                <h4>{{ (infoService.viewInfo$ | async)?.subtitle4 }}</h4>
                 <p>
-                  {{ (infoService.info$ | async)?.description4 }}
+                  {{ (infoService.viewInfo$ | async)?.description4 }}
                 </p>
               </li>
             </ul>
