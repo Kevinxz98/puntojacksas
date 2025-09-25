@@ -2,61 +2,331 @@
 <div class="overlay"></div>
 
 <main class="main-wrapper">
-    <app-header></app-header>
+  <app-header></app-header>
 
-
-    <section class="section">
-        <div class="container-fluid">
-            <!-- ========== title-wrapper start ========== -->
-            <div class="title-wrapper pt-30">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="title">
-                            <h2>Administrar Servicios</h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
+  <section class="section">
+    <div class="container-fluid">
+      <!-- ========== title-wrapper start ========== -->
+      <div class="title-wrapper pt-30">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="title">
+              <h2>Administrar Servicios</h2>
             </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row col-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Servicio</th>
-                                    <th scope="col">Titulo</th>
-                                    <th scope="col">Imagen</th>
-                                    <th scope="col">Acciones</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr *ngFor="let s of servicios; trackBy: trackById">
-                                    <td>{{ s.id }}</td>
-                                    <td>{{ s.nombre }}</td>
-                                    <td>{{ s.titulo }}</td>
-                                    <td>
-                                        <img [src]="'http://127.0.0.1:8000/storage/' + s.foto" alt="Imagen del servicio"
-                                            width="100">
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-primary btn-sm me-2">Editar</button>
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-
-                        </table>
-
-
-
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+        <!-- end row -->
+      </div>
 
+      <div class="card">
+        <div class="card-body">
+          <div class="row col-12">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th class="th" scope="col">Servicio</th>
+                    <th class="th" scope="col">Titulo</th>
+                    <th class="th" scope="col">Imagen</th>
+                    <th class="th" scope="col">Acciones</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let s of servicios; trackBy: trackById">
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.nombre }}</td>
+                    <td>{{ s.titulo }}</td>
+                    <td>
+                      <img
+                        *ngIf="s.foto"
+                        [src]="'http://127.0.0.1:8000/storage/' + s.foto"
+                        alt="Imagen del servicio"
+                        width="100"
+                      />
+                    </td>
+                    <td>
+                      <button class="btn btn-primary btn-sm me-2">
+                        Editar
+                      </button>
+                      <button class="btn btn-danger btn-sm" (click)="deleteServicio(s.id)">Eliminar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-success mt-3" (click)="addServicio()">
+            Agregar Servicio
+          </button>
+          @if(showForm){
+          <form [formGroup]="servicioForm" class="mt-4" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="nombre">Nombre del servicio</label>
+              <input
+                type="text"
+                id="nombre"
+                class="form-control"
+                formControlName="nombre"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="keywords">keywords del servicio</label>
+              <input
+                type="text"
+                id="keywords"
+                class="form-control"
+                formControlName="keywords"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="fotoTop">Foto De la parte de arriba</label>
+              <input
+                type="file"
+                id="fotoTop"
+                class="form-control"
+                (change)="onFileSelected($event, 'fotoTop')"
+              />
+              @if (previewUrls['fotoTop']) {
+              <img
+                [src]="previewUrls['fotoTop']"
+                class="img-thumbnail mt-2"
+                width="150"
+              />
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="foto">Foto Principal</label>
+              <input
+                type="file"
+                id="foto"
+                class="form-control"
+                (change)="onFileSelected($event, 'foto')"
+              />
+              @if (previewUrls['foto']) {
+              <img
+                [src]="previewUrls['foto']"
+                class="img-thumbnail mt-2"
+                width="150"
+              />
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="fotoMini"
+                >Foto que aparecerá en la página principal</label
+              >
+              <input
+                type="file"
+                id="fotoMini"
+                class="form-control"
+                (change)="onFileSelected($event, 'fotoMini')"
+              />
+              @if (previewUrls['fotoMini']) {
+              <img
+                [src]="previewUrls['fotoMini']"
+                class="img-thumbnail mt-2"
+                width="150"
+              />
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="titulo"
+                >Titulo del servicio(Puede ser el mismo nombre)</label
+              >
+              <input
+                type="text"
+                id="titulo"
+                class="form-control"
+                formControlName="titulo"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="subtitulo">Subtitulo del servicio</label>
+              <input
+                type="text"
+                id="subtitulo"
+                class="form-control"
+                formControlName="subtitulo"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="lead">Lead de entrada al servicio</label>
+              <textarea
+                id="lead"
+                class="form-control"
+                formControlName="lead"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="subtitulo2">subtitulo2 del servicio</label>
+              <input
+                type="text"
+                id="subtitulo2"
+                class="form-control"
+                formControlName="subtitulo2"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label>Servicios Incluidos</label>
+              <input
+                type="text"
+                id="include1"
+                class="form-control"
+                formControlName="include1"
+              />
+              <input
+                type="text"
+                id="include2"
+                class="form-control"
+                formControlName="include2"
+              />
+              <input
+                type="text"
+                id="include3"
+                class="form-control"
+                formControlName="include3"
+              />
+              <input
+                type="text"
+                id="include4"
+                class="form-control"
+                formControlName="include4"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="subtitulo3">subtitulo3 del servicio</label>
+              <input
+                type="text"
+                id="subtitulo3"
+                class="form-control"
+                formControlName="subtitulo3"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="texto1">texto del subtitulo3</label>
+              <textarea
+                id="texto1"
+                class="form-control"
+                formControlName="texto1"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="descripcion">Descripcion general del servicio</label>
+              <textarea
+                id="descripcion"
+                class="form-control"
+                formControlName="descripcion"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label>Atendemos:</label>
+              <input
+                type="text"
+                id="ate1"
+                class="form-control"
+                formControlName="ate1"
+              />
+              <input
+                type="text"
+                id="ate2"
+                class="form-control"
+                formControlName="ate2"
+              />
+              <input
+                type="text"
+                id="ate3"
+                class="form-control"
+                formControlName="ate3"
+              />
+              <input
+                type="text"
+                id="ate4"
+                class="form-control"
+                formControlName="ate4"
+              />
+              <input
+                type="text"
+                id="ate5"
+                class="form-control"
+                formControlName="ate5"
+              />
+              <input
+                type="text"
+                id="ate6"
+                class="form-control"
+                formControlName="ate6"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label>Suministramos:</label>
+              <input
+                type="text"
+                id="sum1"
+                class="form-control"
+                formControlName="sum1"
+              />
+              <input
+                type="text"
+                id="sum2"
+                class="form-control"
+                formControlName="sum2"
+              />
+              <input
+                type="text"
+                id="sum3"
+                class="form-control"
+                formControlName="sum3"
+              />
+              <input
+                type="text"
+                id="sum4"
+                class="form-control"
+                formControlName="sum4"
+              />
+              <input
+                type="text"
+                id="sum5"
+                class="form-control"
+                formControlName="sum5"
+              />
+              <input
+                type="text"
+                id="sum6"
+                class="form-control"
+                formControlName="sum6"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button
+              type="button"
+              class="btn btn-secondary ms-2"
+              (click)="showForm = false"
+            >
+              Cancelar
+            </button>
+          </form>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
 </main>

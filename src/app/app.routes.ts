@@ -8,6 +8,7 @@ import { AdminLayout } from './layouts/admin-layout/admin-layout';
 import { Dashboard } from './components/admin/dashboard/dashboard';
 import { AdminInfo } from './components/admin/admin-info/admin-info';
 import { AdminServicios } from './components/admin/admin-servicios/admin-servicios';
+import { ServicioDetalle } from './components/servicio-detalle/servicio-detalle';
 
 export const routes: Routes = [
  
@@ -16,6 +17,7 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
         { path: '', component: Home },
+        { path: 'servicio/:slug', component: ServicioDetalle },
         
         ]
     },
