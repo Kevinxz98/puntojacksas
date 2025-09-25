@@ -17,7 +17,7 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
         { path: '', component: Home },
-        { path: 'servicio/:slug', component: ServicioDetalle },
+        { path: 'servicio', component: ServicioDetalle },
         
         ]
     },
