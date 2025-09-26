@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { Login } from './components/auth/login/login';
 import { Register } from './components/auth/register/register';
 import { Home } from './home/home';
@@ -10,6 +10,7 @@ import { AdminInfo } from './components/admin/admin-info/admin-info';
 import { AdminServicios } from './components/admin/admin-servicios/admin-servicios';
 import { ServicioDetalle } from './components/servicio-detalle/servicio-detalle';
 
+
 export const routes: Routes = [
  
     {
@@ -17,7 +18,7 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
         { path: '', component: Home },
-        { path: 'servicio', component: ServicioDetalle },
+        { path: ':slug', component: ServicioDetalle },
         
         ]
     },
@@ -25,17 +26,17 @@ export const routes: Routes = [
         path: '',
         component: AuthLayout,
         children: [
-        { path: 'login', component: Login },
-        { path: 'register', component: Register },
+        { path: 'admin/login', component: Login },
+        { path: 'admin/register', component: Register },
         ]
     },
     {
         path: '',
         component: AdminLayout,
         children: [
-        { path: 'dashboard', component: Dashboard },
-        { path: 'admin-information', component: AdminInfo },
-        { path: 'admin-servicios', component: AdminServicios },
+        { path: 'admin/dashboard', component: Dashboard },
+        { path: 'admin/admin-information', component: AdminInfo },
+        { path: 'admin/admin-servicios', component: AdminServicios },
         ]
     },
 ];

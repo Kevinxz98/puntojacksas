@@ -46,7 +46,7 @@ export class Login {
           if (this.token) {
             localStorage.setItem('token', this.token);
             localStorage.setItem('user', JSON.stringify(this.user));
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['admin/dashboard']);
           }
           this.errorMessage = null; // limpio el error si entra
           this.cdr.detectChanges(); // 👈 fuerza update

@@ -7,16 +7,14 @@
     <app-header></app-header>
   </header>
 
-  <div class="breadcrumb-area bg-cover shadow dark text-center text-light" style="background-image: url(assets/img/banner/10.jpg);">
-        <div class="breadcrum-shape">
-            <img src="assets/img/shape/50.png" alt="Image Not Found">
-        </div>
+
+  <div *ngIf="servicio && servicio.fotoTop" class="breadcrumb-area bg-cover shadow dark text-center text-light" [style.background-image]="'url(http://127.0.0.1:8000/storage/' + servicio.fotoTop + ')'">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h1>Service Details</h1>
+                    <h1>{{servicio.titulo}}</h1>
                     <ul class="breadcrumb">
-                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a routerLink="/"><i class="fas fa-home"></i> Home</a></li>
                         <li>Service</li>
                     </ul>
                 </div>

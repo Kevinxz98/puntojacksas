@@ -42,7 +42,7 @@
             <div class="info">
               <span>{{ s.keywords }}</span>
               <h4>
-                <a [routerLink]="['/servicio', slugify(s.slug)]">{{ s.nombre }}</a>
+                <a [routerLink]="[slugify(s.slug)]">{{ s.nombre }}</a>
               </h4>
             </div>
           </div>

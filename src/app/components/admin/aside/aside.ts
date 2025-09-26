@@ -33,7 +33,7 @@ user: any = null;
       complete: () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/admin/login']);
       }
     });
   }
