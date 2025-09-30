@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Servicios {
-  private apiUrl = 'http://127.0.0.1:8000/api/servicios';
-  private apiPublicUrl = 'http://127.0.0.1:8000/api/client-servicios';
-  private apiSlug = 'http://127.0.0.1:8000/api/servicios/${slug}';
+  private apiUrl = environment.apiUrl + '/servicios';
+  private apiPublicUrl = environment.apiUrl + '/client-servicios';
+  private apiSlug = environment.apiUrl + '/servicios/${slug}';
 
   private serviceSubject = new BehaviorSubject<any>(null);
   service$ = this.serviceSubject.asObservable();

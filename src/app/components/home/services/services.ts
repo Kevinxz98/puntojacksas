@@ -5,6 +5,8 @@ import { Servicios } from '../../../services/servicios';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../../environments/environment.prod';
+
 
 @Component({
   selector: 'app-services',
@@ -28,7 +30,7 @@ export class Services implements OnInit {
   }
 
     loadServicios(): void {
-    this.serviciosService.getServicios().subscribe({
+    this.serviciosService.getServiciosPublic().subscribe({
       next: (data) => {
         this.servicios = Array.isArray(data) ? data : data.data ?? [];
         this.cdr.detectChanges();

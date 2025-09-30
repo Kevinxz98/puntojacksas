@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Information {
-  private apiUrl = 'http://127.0.0.1:8000/api/information/show';
-  private apiViewInfo = 'http://127.0.0.1:8000/api/viewinformation/show';
+  private apiUrl = environment.apiUrl + '/information/show';
+  private apiViewInfo = environment.apiUrl + '/viewinformation/show';
 
   private infoSubject = new BehaviorSubject<any>(null);
   info$ = this.infoSubject.asObservable();

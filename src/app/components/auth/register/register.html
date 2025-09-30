@@ -75,7 +75,7 @@
                         </span>
                         <span class="checkbox-label">Recordar</span>
                     </label>
-                    <a routerLink="/login" class="forgot-password">Ya tienes una cuenta?</a>
+                    <a routerLink="/admin/login" class="forgot-password">Ya tienes una cuenta?</a>
                 </div>
 
                 <button type="submit" [disabled]="loginForm.invalid" class="signin-button">
@@ -86,11 +86,6 @@
                 </button>
 
             </form>
-
-            <div class="signup-prompt">
-                <span>Nuevo en la plataforma? </span>
-                <a href="#" class="signup-link">Registrate</a>
-            </div>
 
             <div class="success-state" id="successMessage">
                 <div class="success-visual">

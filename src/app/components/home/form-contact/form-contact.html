@@ -1,57 +1,117 @@
 <div class="container mb-5">
-    <h2 class="text-center" style="font-weight: 600">
-      Cu&eacute;ntanos tu necesidad y te ayudaremos &iexcl;de una!
-    </h2>
+  <h2 class="text-center" style="font-weight: 600">
+    Cu&eacute;ntanos tu necesidad y te ayudaremos &iexcl;de una!
+  </h2>
 
-    <h2 class="text-center" style="font-weight: 500; color: red">
-      Formulario exclusivo para COTIZAR, no para empleo.
-    </h2>
+  <h2 class="text-center" style="font-weight: 500; color: red">
+    Formulario exclusivo para COTIZAR, no para empleo.
+  </h2>
 
-    <form action="#">
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre Completo</label>
-        <input type="text" class="form-control" id="nombre" required />
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre Completo</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+        [class.is-invalid]="nombre?.invalid && nombre?.touched"
+        required
+      />
+      <div *ngIf="nombre?.invalid && nombre?.touched" class="invalid-feedback">
+        <div *ngIf="nombre?.errors?.['required']">El nombre es requerido</div>
+        <div *ngIf="nombre?.errors?.['minlength']">Mínimo 2 caracteres</div>
       </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Correo Electr&oacute;nico</label>
-        <input type="email" class="form-control" id="email" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electrónico</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        [class.is-invalid]="email?.invalid && email?.touched"
+        required
+      />
+      <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback">
+        <div *ngIf="email?.errors?.['required']">El email es requerido</div>
+        <div *ngIf="email?.errors?.['email']">Formato de email inválido</div>
       </div>
-      <div class="mb-3">
-        <label for="telefono" class="form-label">Tel&eacute;fono</label>
-        <input type="tel" class="form-control" id="telefono" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Teléfono</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="telefono"
+        formControlName="telefono"
+        [class.is-invalid]="telefono?.invalid && telefono?.touched"
+        required
+      />
+      <div
+        *ngIf="telefono?.invalid && telefono?.touched"
+        class="invalid-feedback"
+      >
+        <div *ngIf="telefono?.errors?.['required']">
+          El teléfono es requerido
+        </div>
+        <div *ngIf="telefono?.errors?.['pattern']">
+          Formato de teléfono inválido
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="mensaje" class="form-label">Mensaje</label>
-        <textarea
-          class="form-control"
-          id="mensaje"
-          rows="4"
-          required
-        ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea
+        class="form-control"
+        id="mensaje"
+        rows="4"
+        formControlName="mensaje"
+        [class.is-invalid]="mensaje?.invalid && mensaje?.touched"
+        required
+      ></textarea>
+      <div
+        *ngIf="mensaje?.invalid && mensaje?.touched"
+        class="invalid-feedback"
+      >
+        <div *ngIf="mensaje?.errors?.['required']">El mensaje es requerido</div>
+        <div *ngIf="mensaje?.errors?.['minlength']">Mínimo 10 caracteres</div>
       </div>
-      <div class="mb-3">
-        <p>
-          PuntoJack SAS se compromete a proteger y respetar su privacidad, y
-          solo usaremos su información personal para administrar su cuenta y
-          proporcionarle los productos y servicios que nos solicitó. De vez en
-          cuando, nos gustaría comunicarnos con usted acerca de nuestros
-          productos y servicios, así como sobre otro contenido que pueda ser de
-          su interés. Si acepta que nos comuniquemos con usted para este
-          propósito, marque a continuación para indicar cómo desea que nos
-          comuniquemos con usted:
-        </p>
-      </div>
-      <div>
+    </div>
+
+    <div class="mb-3">
+      <p>
+        PuntoJack SAS se compromete a proteger y respetar su privacidad, y solo
+        usaremos su información personal para administrar su cuenta y
+        proporcionarle los productos y servicios que nos solicitó. De vez en
+        cuando, nos gustaría comunicarnos con usted acerca de nuestros productos
+        y servicios, así como sobre otro contenido que pueda ser de su interés.
+        Si acepta que nos comuniquemos con usted para este propósito, marque a
+        continuación para indicar cómo desea que nos comuniquemos con usted:
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <div class="d-flex align-center justify-content-start">
         <input
+          style="min-width: 0; min-height: 0;"
           type="checkbox"
-          class=""
           id="terminos"
+          formControlName="terminos"
+          [class.is-invalid]="terminos?.invalid && terminos?.touched"
           required
-          style="min-height: 0"
         />
-        <label class="" for="terminos"
-          >Acepto los t&eacute;rminos y condiciones</label
-        >
+        <label class="align-bottom" for="terminos"> Acepto los términos y condiciones</label>
+      </div>
+
+      <div
+        *ngIf="terminos?.invalid && terminos?.touched"
+        class="invalid-feedback d-block"
+      >
+        Debes aceptar los términos y condiciones
       </div>
 
       <p>
@@ -65,7 +125,20 @@
         información personal suministrada arriba para proporcionarte el
         contenido solicitado.
       </p>
+    </div>
 
-      <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
-    </form>
-  </div>
+    <!-- Mensajes de éxito/error -->
+    <div *ngIf="messageSent" class="alert alert-success">
+      ✅ Mensaje enviado correctamente. Nos pondremos en contacto contigo
+      pronto.
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      ❌ {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-primary" [disabled]="isLoading">
+      {{ isLoading ? "Enviando..." : "Enviar" }}
+    </button>
+  </form>
+</div>

@@ -9,6 +9,8 @@ import { Dashboard } from './components/admin/dashboard/dashboard';
 import { AdminInfo } from './components/admin/admin-info/admin-info';
 import { AdminServicios } from './components/admin/admin-servicios/admin-servicios';
 import { ServicioDetalle } from './components/servicio-detalle/servicio-detalle';
+import { Contact } from './contact/contact';
+import { AuthGuard } from './guards/auth-guard';
 
 
 export const routes: Routes = [
@@ -19,6 +21,7 @@ export const routes: Routes = [
         children: [
         { path: '', component: Home },
         { path: ':slug', component: ServicioDetalle },
+        { path: 'home/contact', component: Contact },
         
         ]
     },
@@ -33,6 +36,7 @@ export const routes: Routes = [
     {
         path: '',
         component: AdminLayout,
+        canActivate: [AuthGuard],
         children: [
         { path: 'admin/dashboard', component: Dashboard },
         { path: 'admin/admin-information', component: AdminInfo },

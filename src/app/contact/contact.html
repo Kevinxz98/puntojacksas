@@ -1,0 +1,138 @@
+<div class="wrapper">
+  <!-- Start Header Top 
+    ============================================= -->
+  <app-header-top></app-header-top>
+
+  <!-- Header 
+    ============================================= -->
+  <header>
+    <app-header></app-header>
+  </header>
+  <!-- End Header -->
+
+  <div
+    class="breadcrumb-area bg-cover shadow dark text-center text-light"
+    style="background-image: url(assets/images/fondo.jpg)"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <h1>Contactanos</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-style-one-area overflow-hidden default-padding pt-2">
+    <div class="container">
+      <div class="row align-center">
+        <div class="contact-stye-one col-lg-5 mb-md-50 mb-xs-20">
+          <div class="contact-style-one-info">
+            <h2>🧼 Tu espacio limpio comienza aquí</h2>
+            <p>
+              En PuntoJack SAS, creemos que un entorno limpio no solo mejora tu
+              calidad de vida, sino que también transmite bienestar y confianza.
+            </p>
+            <p>
+              Si deseas solicitar una cotización personalizada o recibir más
+              información sobre nuestros servicios de limpieza para hogares,
+              oficinas o negocios, no dudes en contactarnos. Utiliza cualquiera
+              de los medios que te compartimos a continuación.
+            </p>
+            <b
+              >Estamos listos para ayudarte con atención rápida, profesional y a
+              tu medida.</b
+            >
+            <ul>
+              <li
+                class="wow fadeInUp"
+                style="visibility: visible; animation-name: fadeInUp"
+              >
+                <div class="icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="content">
+                  <h5 class="title">Llamada</h5>
+                  <a
+                    href="tel:+57{{
+                      (infoService.viewInfo$ | async)?.telefono
+                    }}"
+                    >+57 {{ (infoService.viewInfo$ | async)?.telefono }}</a
+                  ><br />
+                  <a
+                    href="tel:+57{{
+                      (infoService.viewInfo$ | async)?.whatsapp
+                    }}"
+                    >+57 {{ (infoService.viewInfo$ | async)?.whatsapp }}</a
+                  >
+                </div>
+              </li>
+              <li
+                class="wow fadeInUp"
+                data-wow-delay="300ms"
+                style="
+                  visibility: visible;
+                  animation-delay: 300ms;
+                  animation-name: fadeInUp;
+                "
+              >
+                <div class="icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="info">
+                  <h5 class="title">Dirección</h5>
+                  <p>
+                    {{ (infoService.viewInfo$ | async)?.direccion }}
+                  </p>
+                </div>
+              </li>
+              <li
+                class="wow fadeInUp"
+                data-wow-delay="500ms"
+                style="
+                  visibility: visible;
+                  animation-delay: 500ms;
+                  animation-name: fadeInUp;
+                "
+              >
+                <div class="icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="info">
+                  <h5 class="title">Official Email</h5>
+                  <a
+                    href="mailto:{{ (infoService.viewInfo$ | async)?.email }}"
+                    >{{ (infoService.viewInfo$ | async)?.email }}</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-stye-one col-lg-7 p-0 my-4">
+          <div
+            class="contact-form-style-one"
+            style="padding-left: 0 !important; padding-right: 0 !important"
+          >
+            <app-form-contact></app-form-contact>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="maps-area bg-gray overflow-hidden">
+    <div class="google-maps">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d508940.1902673939!2d-74.10333!3d4.753478!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f84672021275d%3A0xcc9a51facde81d40!2sCl.%20149a%20%23115-46%2C%20Suba%2C%20Bogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sus!4v1758999379117!5m2!1ses!2sus"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

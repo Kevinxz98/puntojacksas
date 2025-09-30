@@ -1,0 +1,20 @@
+.li{
+    list-style: square;
+}
+
+.ate ul{
+    margin-left: 30px;
+}
+
+.sum ul{
+    margin-left: 30px;
+}
+
+.services-list-widget .current_page_item a, .services-list-widget .current-item a {
+    color: red;
+    font-weight: 600;
+}
+
+.services-list-widget .current_page_item a::after, .services-list-widget .current-item a::after {
+    opacity: 1;
+}

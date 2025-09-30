@@ -30,10 +30,7 @@
                 <div class="profile-info">
                   <div class="info">
                     <div class="image">
-                      <img
-                        src="assets/images/profile/profile-image.png"
-                        alt=""
-                      />
+                      <i style="font-size: 30px;" class="fa-solid fa-user mt-1"></i>
                     </div>
                     <div>
                       <h6 class="fw-500">{{userName}}</h6>
@@ -49,17 +46,14 @@
                 <li>
                   <div class="author-info flex items-center !p-1">
                     <div class="image">
-                      <img
-                        src="assets/images/profile/profile-image.png"
-                        alt="image"
-                      />
+                      <i  class="fa-solid fa-user mt-1"></i>
                     </div>
                     <div class="content">
-                      <h4 class="text-sm">Adam Joe</h4>
+                      <h4 class="text-sm">{{userName}}</h4>
                       <a
                         class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
                         href="#"
-                        >Email@gmail.com</a
+                        >{{userEmail}}</a
                       >
                     </div>
                   </div>
@@ -79,7 +73,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                  <a style="cursor: pointer;" (click)="logout()"> <i class="lni lni-exit"></i> Sign Out </a>
                 </li>
               </ul>
             </div>

@@ -605,19 +605,7 @@
     });
 
     // Sticky Header Js
-    $(window).on('scroll', function() {
-        var Width = $(document).width();
-        var scroll = $(window).scrollTop();
-        
-        if ($("body").scrollTop() > 0 || $("html").scrollTop() > 0) {
-            if (Width > 1023) {
-                $(".navbar-sticky").addClass("sticked");
-            }
-        } else {
-            $(".navbar-sticky").removeClass("sticked");
-        }
-
-    });
+    
 
 
 	/* ==================================================
