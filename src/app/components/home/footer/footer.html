@@ -103,25 +103,20 @@
             </div>
             <ul class="footer-social">
               <li>
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
+              <a href="{{ (infoService.viewInfo$ | async)?.facebook }}">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ (infoService.viewInfo$ | async)?.instagram }}">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ (infoService.viewInfo$ | async)?.linkedin }}">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
             </ul>
           </div>
         </div>

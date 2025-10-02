@@ -41,7 +41,7 @@
                     <td>
                       <img
                         *ngIf="s.foto"
-                        [src]="'http://127.0.0.1:8000/storage/' + s.foto"
+                        [src]=" backUrl + s.foto"
                         alt="Imagen del servicio"
                         width="100"
                       />

@@ -8,6 +8,7 @@ import { Header } from '../header/header';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Servicios } from '../../../services/servicios';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'app-admin-servicios',
@@ -20,6 +21,7 @@ export class AdminServicios implements OnInit {
   servicios: any[] = [];
   servicioForm!: FormGroup;
   showForm: boolean = false;
+  backUrl = environment.apiStorageUrl ;
 
   constructor(
     private fb: FormBuilder,
@@ -62,9 +64,7 @@ export class AdminServicios implements OnInit {
       sum5: [''],
       sum6: [''],
     });
-    this.serviciosService.getServicios().subscribe((data) => {
-      this.servicios = data;
-    });
+
 
     this.loadServicios();
     this.cdr.detectChanges();
@@ -128,7 +128,7 @@ export class AdminServicios implements OnInit {
       formData.set(field, this.selectedFiles[field]);
     });
 
-    this.http.post('http://127.0.0.1:8000/api/create-servicios', formData, this.getHeaders())
+    this.http.post(environment.apiUrl + '/create-servicios', formData, this.getHeaders())
   .subscribe({
     next: (res) => {
       console.log('Guardado exitoso', res);
