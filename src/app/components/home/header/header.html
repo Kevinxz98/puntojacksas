@@ -84,7 +84,7 @@
             </li>
 
             <li><a routerLink="/home/contact">Contáctanos</a></li>
-            <li><a href="#">Blog</a></li>
+            <!--<li><a href="#">Blog</a></li>-->
             <li>
               <a class="cursor-pointer" routerLink="/admin/login">Login</a>
             </li>
@@ -99,7 +99,7 @@
           <div class="attr-nav">
             <ul>
               <li class="button">
-                <a href="#">Cotiza Ahora</a>
+                <a target="_blank" href="https://wa.me/57{{ (infoService.viewInfo$ | async)?.whatsapp }}?text=Hola%2C%20quiero%20más%20información">Cotiza Ahora</a>
               </li>
             </ul>
           </div>

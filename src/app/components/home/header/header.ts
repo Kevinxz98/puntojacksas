@@ -3,6 +3,7 @@ import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription, filter } from 'rxjs';
 import { Servicios } from '../../../services/servicios';
+import { Information } from '../../../services/information';
 
 @Component({
   selector: 'app-header',
@@ -18,10 +19,12 @@ export class Header implements OnInit, OnDestroy {
   isDropdownOpen = false;
   currentUrl: string = '';
 
+
   constructor(
     private serviciosService: Servicios,
     private cdr: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    public infoService: Information
   ) {}
 
   ngOnInit(): void {

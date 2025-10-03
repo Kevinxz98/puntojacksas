@@ -214,7 +214,7 @@
                       *ngFor="let s of nServicios"
                       [ngClass]="{ current_page_item: s.slug === slugActual }"
                     >
-                      <a [routerLink]="['/', s.slug]">{{ s.nombre }}</a>
+                      <a href="/{{s.slug}}">{{ s.nombre }}</a>
                     </li>
                   </ul>
                 </div>
@@ -244,12 +244,7 @@
                 <ul>
                   <li>
                     <a href="#"
-                      ><i class="fas fa-file-pdf"></i> Download Brochure
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fas fa-file-pdf"></i> Company Details
+                      ><i class="fas fa-file-pdf"></i> Ver Brochure
                     </a>
                   </li>
                 </ul>

@@ -46,7 +46,6 @@ export class ServicioDetalle implements OnInit {
         next: (data) => {
           this.servicio = data.data || data;
           this.loadServicio(slug);
-          this.cdr.detectChanges();
         },
         error: (err) => {
           console.error('Error al cargar el servicio', err);

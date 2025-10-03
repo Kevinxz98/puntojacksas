@@ -1,1 +1,25 @@
+<!-- Botón flotante -->
+<div class="whatsapp-btn" (click)="toggleChat()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="white">
+    <path d="M16 .5C7.437.5.5 7.437.5 16c0 3.004.828 5.918 2.402 8.463L.5 31.5l7.243-2.34A15.4 15.4 0 0016 31.5c8.563 0 15.5-6.937 15.5-15.5S24.563.5 16 .5zm0 28c-2.625 0-5.184-.73-7.39-2.11l-.527-.332-4.303 1.387 1.406-4.188-.344-.543A12.9 12.9 0 013 16c0-7.168 5.832-13 13-13s13 5.832 13 13-5.832 13-13 13zm7.367-9.219c-.402-.199-2.36-1.164-2.73-1.297-.371-.137-.64-.199-.91.203-.266.398-1.05 1.297-1.289 1.566-.238.266-.477.301-.879.102-.398-.199-1.68-.617-3.2-1.969-1.184-1.055-1.98-2.356-2.219-2.754-.238-.398-.027-.609.18-.805.184-.176.398-.465.598-.699.199-.238.266-.398.402-.664.133-.266.066-.5-.035-.699-.102-.199-.91-2.195-1.246-3.008-.328-.789-.664-.684-.91-.699-.238-.012-.5-.016-.77-.016-.27 0-.707.102-1.078.5-.371.398-1.414 1.379-1.414 3.363s1.449 3.91 1.648 4.18c.199.266 2.855 4.363 6.918 6.121 4.063 1.75 4.063 1.168 4.797 1.102.73-.063 2.36-.957 2.691-1.883.332-.926.332-1.715.23-1.883-.094-.168-.371-.266-.773-.465z"/>
+  </svg>
+
+  <span class="mx-2"> <a class="text-white" href="https://wa.me/57{{ (infoService.viewInfo$ | async)?.whatsapp }}?text=Hola%2C%20quiero%20más%20información" target="_blank"> Contáctanos</a></span>
+</div>
+
+<!-- Chat emergente -->
+<div class="chat-popup" [ngStyle]="{ 'display': chatVisible ? 'flex' : 'none' }">
+  <div class="chat-header"><i (click)="toggleChat()" class="fa-regular fa-circle-xmark xmark"></i>Contacto WhatsApp</div>
+  <div class="chat-body">
+    <div class="chat-message">
+       Bienvenido 👋, este es nuestro canal de atención por WhatsApp. Cuéntanos cómo podemos ayudarte.
+      <div class="time">14:35</div>
+    </div>
+  </div>
+  <div class="chat-footer">
+    <a href="https://wa.me/57{{ (infoService.viewInfo$ | async)?.whatsapp }}?text=Hola%2C%20quiero%20más%20información" target="_blank">
+      Continuar en WhatsApp
+    </a>
+  </div>
+</div>
 <router-outlet></router-outlet>
