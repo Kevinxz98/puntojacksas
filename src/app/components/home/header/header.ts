@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Subscription, filter } from 'rxjs';
 import { Servicios } from '../../../services/servicios';
 import { Information } from '../../../services/information';
+import { firstValueFrom } from 'rxjs';
+
 
 @Component({
   selector: 'app-header',
@@ -169,4 +171,14 @@ export class Header implements OnInit, OnDestroy {
     this.closeDropdown();
     this.cdr.detectChanges();
   }
+
+  async reportWhatsAppConversion() {
+      const info = await firstValueFrom(this.infoService.viewInfo$);
+      const whatsapp = info?.whatsapp;
+  
+      const url = `https://wa.me/57${whatsapp}?text=Hola%2C%20quiero%20más%20información`;
+  
+      // @ts-ignore
+      gtag_report_conversion_llamada(url);
+    }
 }

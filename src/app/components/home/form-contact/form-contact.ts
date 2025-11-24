@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Contact } from '../../../services/contact';
+declare var gtag_report_conversion_formulario: any;
+
 
 @Component({
   selector: 'app-form-contact',
@@ -10,12 +12,14 @@ import { Contact } from '../../../services/contact';
   templateUrl: './form-contact.html',
   styleUrl: './form-contact.css'
 })
+
 export class FormContact {
 
   contactForm: FormGroup;
   isLoading = false;
   messageSent = false;
   errorMessage = '';
+  
 
   constructor(
     private fb: FormBuilder,
@@ -23,6 +27,7 @@ export class FormContact {
   ) {
     this.contactForm = this.createForm();
   }
+  
 
   private createForm(): FormGroup {
     return this.fb.group({
@@ -43,6 +48,7 @@ export class FormContact {
         next: (response) => {
           this.isLoading = false;
           this.messageSent = true;
+          gtag_report_conversion_formulario();
           this.contactForm.reset();
           
           // Opcional: resetear el estado después de 5 segundos

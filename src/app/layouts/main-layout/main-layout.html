@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="chat-footer">
-    <a href="https://wa.me/57{{ (infoService.viewInfo$ | async)?.whatsapp }}?text=Hola%2C%20quiero%20más%20información" target="_blank">
+    <a (click)="reportWhatsAppConversion()" style="cursor:pointer; color: white;" target="_blank">
       Continuar en WhatsApp
     </a>
   </div>
